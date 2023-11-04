@@ -1,0 +1,1379 @@
+alternatives {
+  words {
+    start_time {
+      nanos: 300000000
+    }
+    end_time {
+      nanos: 900000000
+    }
+    word: "Mr"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      nanos: 900000000
+    }
+    end_time {
+      seconds: 1
+      nanos: 200000000
+    }
+    word: "Mario"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 1
+      nanos: 200000000
+    }
+    end_time {
+      seconds: 2
+      nanos: 400000000
+    }
+    word: "Mr"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 2
+      nanos: 400000000
+    }
+    end_time {
+      seconds: 2
+      nanos: 900000000
+    }
+    word: "Marriott"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 2
+      nanos: 900000000
+    }
+    end_time {
+      seconds: 3
+      nanos: 300000000
+    }
+    word: "was"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 3
+      nanos: 300000000
+    }
+    end_time {
+      seconds: 3
+      nanos: 700000000
+    }
+    word: "not"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 3
+      nanos: 700000000
+    }
+    end_time {
+      seconds: 4
+      nanos: 600000000
+    }
+    word: "suspended"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 4
+      nanos: 600000000
+    }
+    end_time {
+      seconds: 5
+      nanos: 200000000
+    }
+    word: "I"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 5
+      nanos: 200000000
+    }
+    end_time {
+      seconds: 5
+      nanos: 500000000
+    }
+    word: "was"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 5
+      nanos: 500000000
+    }
+    end_time {
+      seconds: 5
+      nanos: 800000000
+    }
+    word: "entitled"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 5
+      nanos: 800000000
+    }
+    end_time {
+      seconds: 6
+      nanos: 100000000
+    }
+    word: "to"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 6
+      nanos: 100000000
+    }
+    end_time {
+      seconds: 6
+      nanos: 400000000
+    }
+    word: "express"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 6
+      nanos: 400000000
+    }
+    end_time {
+      seconds: 6
+      nanos: 700000000
+    }
+    word: "my"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 6
+      nanos: 700000000
+    }
+    end_time {
+      seconds: 7
+      nanos: 200000000
+    }
+    word: "views"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 7
+      nanos: 200000000
+    }
+    end_time {
+      seconds: 7
+      nanos: 400000000
+    }
+    word: "I"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 7
+      nanos: 400000000
+    }
+    end_time {
+      seconds: 7
+      nanos: 700000000
+    }
+    word: "was"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 7
+      nanos: 700000000
+    }
+    end_time {
+      seconds: 8
+    }
+    word: "entitled"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 8
+    }
+    end_time {
+      seconds: 8
+      nanos: 200000000
+    }
+    word: "to"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 8
+      nanos: 200000000
+    }
+    end_time {
+      seconds: 8
+      nanos: 400000000
+    }
+    word: "be"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 8
+      nanos: 400000000
+    }
+    end_time {
+      seconds: 8
+      nanos: 700000000
+    }
+    word: "concerned"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 8
+      nanos: 700000000
+    }
+    end_time {
+      seconds: 9
+      nanos: 800000000
+    }
+    word: "I"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 9
+      nanos: 800000000
+    }
+    end_time {
+      seconds: 10
+      nanos: 200000000
+    }
+    word: "was"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 10
+      nanos: 200000000
+    }
+    end_time {
+      seconds: 10
+      nanos: 500000000
+    }
+    word: "not"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 10
+      nanos: 500000000
+    }
+    end_time {
+      seconds: 10
+      nanos: 900000000
+    }
+    word: "entitled"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 10
+      nanos: 900000000
+    }
+    end_time {
+      seconds: 11
+      nanos: 300000000
+    }
+    word: "to"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 11
+      nanos: 300000000
+    }
+    end_time {
+      seconds: 12
+      nanos: 100000000
+    }
+    word: "instruct"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 12
+      nanos: 100000000
+    }
+    end_time {
+      seconds: 12
+      nanos: 600000000
+    }
+    word: "Derek"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 12
+      nanos: 600000000
+    }
+    end_time {
+      seconds: 13
+    }
+    word: "Lewis"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 13
+    }
+    end_time {
+      seconds: 13
+      nanos: 600000000
+    }
+    word: "and"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 13
+      nanos: 600000000
+    }
+    end_time {
+      seconds: 13
+      nanos: 800000000
+    }
+    word: "I"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 13
+      nanos: 800000000
+    }
+    end_time {
+      seconds: 14
+      nanos: 100000000
+    }
+    word: "did"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 14
+      nanos: 100000000
+    }
+    end_time {
+      seconds: 14
+      nanos: 400000000
+    }
+    word: "not"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 14
+      nanos: 400000000
+    }
+    end_time {
+      seconds: 14
+      nanos: 800000000
+    }
+    word: "instruct"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 14
+      nanos: 800000000
+    }
+    end_time {
+      seconds: 15
+      nanos: 200000000
+    }
+    word: "him"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 15
+      nanos: 200000000
+    }
+    end_time {
+      seconds: 15
+      nanos: 600000000
+    }
+    word: "and"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 15
+      nanos: 600000000
+    }
+    end_time {
+      seconds: 15
+      nanos: 700000000
+    }
+    word: "if"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 15
+      nanos: 700000000
+    }
+    end_time {
+      seconds: 16
+      nanos: 900000000
+    }
+    word: "the"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 16
+      nanos: 900000000
+    }
+    end_time {
+      seconds: 17
+      nanos: 900000000
+    }
+    word: "matter"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 17
+      nanos: 900000000
+    }
+    end_time {
+      seconds: 18
+    }
+    word: "is"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 18
+    }
+    end_time {
+      seconds: 18
+      nanos: 300000000
+    }
+    word: "that"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 18
+      nanos: 300000000
+    }
+    end_time {
+      seconds: 19
+      nanos: 100000000
+    }
+    word: "mr."
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 19
+      nanos: 100000000
+    }
+    end_time {
+      seconds: 19
+      nanos: 600000000
+    }
+    word: "Marriott"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 19
+      nanos: 600000000
+    }
+    end_time {
+      seconds: 20
+    }
+    word: "was"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 20
+    }
+    end_time {
+      seconds: 20
+      nanos: 300000000
+    }
+    word: "not"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 20
+      nanos: 300000000
+    }
+    end_time {
+      seconds: 21
+      nanos: 100000000
+    }
+    word: "suspended"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 21
+      nanos: 100000000
+    }
+    end_time {
+      seconds: 21
+      nanos: 400000000
+    }
+    word: "I"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 21
+      nanos: 400000000
+    }
+    end_time {
+      seconds: 21
+      nanos: 600000000
+    }
+    word: "did"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 21
+      nanos: 600000000
+    }
+    end_time {
+      seconds: 21
+      nanos: 900000000
+    }
+    word: "not"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 21
+      nanos: 900000000
+    }
+    end_time {
+      seconds: 21
+      nanos: 900000000
+    }
+    word: "I"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 21
+      nanos: 900000000
+    }
+    end_time {
+      seconds: 22
+      nanos: 800000000
+    }
+    word: "did"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 22
+      nanos: 800000000
+    }
+    end_time {
+      seconds: 23
+      nanos: 100000000
+    }
+    word: "not"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 23
+      nanos: 100000000
+    }
+    end_time {
+      seconds: 24
+      nanos: 500000000
+    }
+    word: "give"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 24
+      nanos: 500000000
+    }
+    end_time {
+      seconds: 24
+      nanos: 900000000
+    }
+    word: "presents"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 24
+      nanos: 900000000
+    }
+    end_time {
+      seconds: 25
+    }
+    word: "to"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 25
+    }
+    end_time {
+      seconds: 25
+      nanos: 100000000
+    }
+    word: "every"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 25
+      nanos: 100000000
+    }
+    end_time {
+      seconds: 25
+      nanos: 500000000
+    }
+    word: "rule"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 25
+      nanos: 500000000
+    }
+    end_time {
+      seconds: 25
+      nanos: 700000000
+    }
+    word: "I"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 25
+      nanos: 700000000
+    }
+    end_time {
+      seconds: 26
+    }
+    word: "took"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 26
+    }
+    end_time {
+      seconds: 26
+      nanos: 300000000
+    }
+    word: "advice"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 26
+      nanos: 300000000
+    }
+    end_time {
+      seconds: 26
+      nanos: 900000000
+    }
+    word: "on"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 26
+      nanos: 900000000
+    }
+    end_time {
+      seconds: 27
+    }
+    word: "what"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 27
+    }
+    end_time {
+      seconds: 27
+      nanos: 200000000
+    }
+    word: "I"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 27
+      nanos: 200000000
+    }
+    end_time {
+      seconds: 27
+      nanos: 600000000
+    }
+    word: "could"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 27
+      nanos: 600000000
+    }
+    end_time {
+      seconds: 27
+      nanos: 800000000
+    }
+    word: "or"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 27
+      nanos: 800000000
+    }
+    end_time {
+      seconds: 28
+      nanos: 100000000
+    }
+    word: "could"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 28
+      nanos: 100000000
+    }
+    end_time {
+      seconds: 28
+      nanos: 400000000
+    }
+    word: "not."
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 28
+      nanos: 400000000
+    }
+    end_time {
+      seconds: 32
+    }
+    word: "I"
+    speaker_tag: 2
+    speaker_label: "2"
+  }
+  words {
+    start_time {
+      seconds: 32
+    }
+    end_time {
+      seconds: 32
+      nanos: 200000000
+    }
+    word: "did"
+    speaker_tag: 2
+    speaker_label: "2"
+  }
+  words {
+    start_time {
+      seconds: 32
+      nanos: 200000000
+    }
+    end_time {
+      seconds: 32
+      nanos: 300000000
+    }
+    word: "not"
+    speaker_tag: 2
+    speaker_label: "2"
+  }
+  words {
+    start_time {
+      seconds: 32
+      nanos: 300000000
+    }
+    end_time {
+      seconds: 36
+      nanos: 600000000
+    }
+    word: "threaten"
+    speaker_tag: 2
+    speaker_label: "2"
+  }
+  words {
+    start_time {
+      seconds: 36
+      nanos: 600000000
+    }
+    end_time {
+      seconds: 36
+      nanos: 900000000
+    }
+    word: "to"
+    speaker_tag: 2
+    speaker_label: "2"
+  }
+  words {
+    start_time {
+      seconds: 36
+      nanos: 900000000
+    }
+    end_time {
+      seconds: 37
+      nanos: 300000000
+    }
+    word: "overrule"
+    speaker_tag: 2
+    speaker_label: "2"
+  }
+  words {
+    start_time {
+      seconds: 37
+      nanos: 300000000
+    }
+    end_time {
+      seconds: 37
+      nanos: 600000000
+    }
+    word: "him"
+    speaker_tag: 2
+    speaker_label: "2"
+  }
+  words {
+    start_time {
+      seconds: 37
+      nanos: 600000000
+    }
+    end_time {
+      seconds: 38
+      nanos: 100000000
+    }
+    word: "I"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 38
+      nanos: 100000000
+    }
+    end_time {
+      seconds: 38
+      nanos: 500000000
+    }
+    word: "have"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 38
+      nanos: 500000000
+    }
+    end_time {
+      seconds: 39
+      nanos: 100000000
+    }
+    word: "accounted"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 39
+      nanos: 100000000
+    }
+    end_time {
+      seconds: 39
+      nanos: 500000000
+    }
+    word: "for"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 39
+      nanos: 500000000
+    }
+    end_time {
+      seconds: 40
+    }
+    word: "my"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 40
+    }
+    end_time {
+      seconds: 40
+      nanos: 500000000
+    }
+    word: "decision"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 40
+      nanos: 500000000
+    }
+    end_time {
+      seconds: 40
+      nanos: 800000000
+    }
+    word: "to"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 40
+      nanos: 800000000
+    }
+    end_time {
+      seconds: 41
+      nanos: 100000000
+    }
+    word: "dismiss"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 41
+      nanos: 100000000
+    }
+    end_time {
+      seconds: 42
+    }
+    word: "Derrick"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 42
+    }
+    end_time {
+      seconds: 42
+      nanos: 300000000
+    }
+    word: "Lewis"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 42
+      nanos: 300000000
+    }
+    end_time {
+      seconds: 42
+      nanos: 700000000
+    }
+    word: "did"
+    speaker_tag: 2
+    speaker_label: "2"
+  }
+  words {
+    start_time {
+      seconds: 42
+      nanos: 700000000
+    }
+    end_time {
+      seconds: 42
+      nanos: 800000000
+    }
+    word: "you"
+    speaker_tag: 2
+    speaker_label: "2"
+  }
+  words {
+    start_time {
+      seconds: 42
+      nanos: 800000000
+    }
+    end_time {
+      seconds: 43
+      nanos: 200000000
+    }
+    word: "listen"
+    speaker_tag: 2
+    speaker_label: "2"
+  }
+  words {
+    start_time {
+      seconds: 43
+      nanos: 200000000
+    }
+    end_time {
+      seconds: 43
+      nanos: 200000000
+    }
+    word: "to"
+    speaker_tag: 2
+    speaker_label: "2"
+  }
+  words {
+    start_time {
+      seconds: 43
+      nanos: 200000000
+    }
+    end_time {
+      seconds: 43
+      nanos: 300000000
+    }
+    word: "it"
+    speaker_tag: 2
+    speaker_label: "2"
+  }
+  words {
+    start_time {
+      seconds: 43
+      nanos: 300000000
+    }
+    end_time {
+      seconds: 43
+      nanos: 500000000
+    }
+    word: "a"
+    speaker_tag: 2
+    speaker_label: "2"
+  }
+  words {
+    start_time {
+      seconds: 43
+      nanos: 500000000
+    }
+    end_time {
+      seconds: 43
+      nanos: 800000000
+    }
+    word: "rule"
+    speaker_tag: 2
+    speaker_label: "2"
+  }
+  words {
+    start_time {
+      seconds: 43
+      nanos: 800000000
+    }
+    end_time {
+      seconds: 44
+    }
+    word: "them"
+    speaker_tag: 2
+    speaker_label: "2"
+  }
+  words {
+    start_time {
+      seconds: 44
+    }
+    end_time {
+      seconds: 45
+      nanos: 400000000
+    }
+    word: "before"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 45
+      nanos: 400000000
+    }
+    end_time {
+      seconds: 45
+      nanos: 500000000
+    }
+    word: "the"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 45
+      nanos: 500000000
+    }
+    end_time {
+      seconds: 49
+    }
+    word: "weather"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 49
+    }
+    end_time {
+      seconds: 49
+      nanos: 300000000
+    }
+    word: "rule"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 49
+      nanos: 300000000
+    }
+    end_time {
+      seconds: 49
+      nanos: 900000000
+    }
+    word: "the"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 49
+      nanos: 900000000
+    }
+    end_time {
+      seconds: 50
+      nanos: 700000000
+    }
+    word: "important"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 50
+      nanos: 700000000
+    }
+    end_time {
+      seconds: 51
+      nanos: 400000000
+    }
+    word: "aspect"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 51
+      nanos: 400000000
+    }
+    end_time {
+      seconds: 51
+      nanos: 500000000
+    }
+    word: "of"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 51
+      nanos: 500000000
+    }
+    end_time {
+      seconds: 51
+      nanos: 700000000
+    }
+    word: "this"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 51
+      nanos: 700000000
+    }
+    end_time {
+      seconds: 52
+      nanos: 100000000
+    }
+    word: "which"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 52
+      nanos: 100000000
+    }
+    end_time {
+      seconds: 52
+      nanos: 200000000
+    }
+    word: "is"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 52
+      nanos: 200000000
+    }
+    end_time {
+      seconds: 52
+      nanos: 500000000
+    }
+    word: "very"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 52
+      nanos: 500000000
+    }
+    end_time {
+      seconds: 52
+      nanos: 900000000
+    }
+    word: "clear"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 52
+      nanos: 900000000
+    }
+    end_time {
+      seconds: 53
+      nanos: 100000000
+    }
+    word: "to"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 53
+      nanos: 100000000
+    }
+    end_time {
+      seconds: 53
+      nanos: 400000000
+    }
+    word: "bear"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 53
+      nanos: 400000000
+    }
+    end_time {
+      seconds: 53
+      nanos: 600000000
+    }
+    word: "in"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+  words {
+    start_time {
+      seconds: 53
+      nanos: 600000000
+    }
+    end_time {
+      seconds: 53
+      nanos: 700000000
+    }
+    word: "mind"
+    speaker_tag: 1
+    speaker_label: "1"
+  }
+}
