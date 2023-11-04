@@ -5,6 +5,7 @@ import React, { useEffect, useRef } from "react";
 
 import YouTube, { YouTubeProps } from "react-youtube";
 import { ANALYSIS_DATA, AnalysisData } from "./data";
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 
 const YoutubeVid = ({
   videoId,
@@ -49,9 +50,9 @@ interface Person {
 type TagInfo = Record<string, Person>;
 
 const TAG_INFO: TagInfo = {
-  "1": { name: "Rick Scott", color: "red", kind: "interviewee" },
-  "2": { name: "Jenny", color: "blue", kind: "interviewer" },
-  "3": { name: "Jeff", color: "green", kind: "interviewer" },
+  "1": { name: "Governor Scott", color: "red", kind: "interviewee" },
+  "2": { name: "Journalist", color: "blue", kind: "interviewer" },
+  "3": { name: "Other Journalist", color: "green", kind: "interviewer" },
 };
 
 type ChartData = {
@@ -122,12 +123,19 @@ export default function Home() {
         time: time_end,
       });
     });
+    while (chartData[chartData.length - 1].time < 60) {
+      chartData.push({
+        friendly: undefined,
+        evasiveness: undefined,
+        time: chartData[chartData.length - 1].time + 3,
+      });
+    }
     return chartData;
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
+    <main className="flex min-h-screen flex-col items-center justify-between p-4">
+      <div className="z-10  w-full items-center justify-between font-mono text-sm lg:flex">
         <YoutubeVid
           videoId="fbgnieG9Z4g"
           onClick={() => {
@@ -135,25 +143,29 @@ export default function Home() {
             isPaused.current = !isPaused.current;
           }}
         />
-        <div className="flex flex-col ml-4 w-96 h-96 overflow-y-scroll">
+        <div className="flex flex-col ml-4 w-1/2 h-96 overflow-y-scroll">
           {
             // Display transcription from analysisData:
             analysisData[analysisData.length - 1]?.transcription.map(
               (entry, i) => {
-                const { speaker_tag, word } = entry;
-                const { name, color, kind } = TAG_INFO[speaker_tag.toString()];
+                let { speaker_tag, word } = entry;
+                let { name, color, kind } = TAG_INFO[speaker_tag.toString()];
+                console.log(color);
                 return (
                   <p
                     key={i}
-                    className={`fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30`}
+                    className={`flex w-96 mt-1 justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pt-3 backdrop-blur-2xl lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4`}
                   >
+                    <span className={`inline-block w-4 h-4 rounded-full`} />
                     <span
-                      className={`inline-block w-2 h-2 rounded-full mr-2 bg-${color}-500`}
-                    />
-                    <span className={`font-bold text-${color} mx-2`}>
+                      className={`w-36 mx-4`}
+                      style={{
+                        color: color,
+                      }}
+                    >
                       {name}
                     </span>
-                    {word}
+                    <span className="w-4/5">{word}</span>
                   </p>
                 );
               }
@@ -163,30 +175,73 @@ export default function Home() {
         </div>
       </div>
       <div className="flex justify-between">
-        <div>
+        <div className="mr-48">
           {analysisData && analysisData[analysisData.length - 1] && (
             <>
               {/** Title for section of stats like evasiveness */}
               <h1 className="text-2xl font-bold ml-8">Stats</h1>
               <>
-                <h2 className="text-2xl font-bold text-center">
+                <h2
+                  className="text-2xl font-bold text-center"
+                  style={{
+                    color: "#82ca9d",
+                  }}
+                >
                   Evasiveness:{" "}
                   {analysisData[analysisData.length - 1].evasiveness}
                 </h2>
-                <h2 className="text-2xl font-bold text-center">
+                <h2
+                  className="text-2xl mb-4 font-bold text-center"
+                  style={{
+                    color: "#8884d8",
+                  }}
+                >
                   Friendliness: {analysisData[analysisData.length - 1].friendly}
                 </h2>
+                <LineChart
+                  width={500}
+                  height={300}
+                  data={generateChart(analysisData)}
+                >
+                  <XAxis
+                    dataKey="time"
+                    ticks={[0, 6, 12, 18, 24, 30, 36, 42, 48, 54, 60]}
+                  />
+                  <YAxis domain={[0, 100]} />
+                  <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+                  <Line type="monotone" dataKey="friendly" stroke="#8884d8" />
+                  <Line
+                    type="monotone"
+                    dataKey="evasiveness"
+                    stroke="#82ca9d"
+                  />
+                </LineChart>
               </>
             </>
           )}
         </div>
-        <div className="w-2/3">
+        <div className="w-2/3 ml-6 flex-col justify-between space-y-24">
           {analysisData && analysisData[analysisData.length - 1] && (
             <>
-              {/** Title for section of unanswered questions */}
-              <h1 className="text-xl font-bold">Unanswered Questions</h1>
+              <div>
+                {/** Title for section of unanswered questions */}
+                <h1 className="text-xl font-bold">Unanswered Questions</h1>
 
-              {analysisData[analysisData.length - 1].questions.map(
+                {analysisData[analysisData.length - 1].questions.map(
+                  (question, i) => {
+                    return (
+                      <div key={i}>
+                        <h2 className="text-xl">{question}</h2>
+                      </div>
+                    );
+                  }
+                )}
+              </div>
+              <div>
+                {/** Title for section of unanswered questions */}
+                <h1 className="text-xl font-bold">Answered Questions</h1>
+
+                {/* {analysisData[analysisData.length - 1].questions.map(
                 (question, i) => {
                   return (
                     <div key={i}>
@@ -194,7 +249,8 @@ export default function Home() {
                     </div>
                   );
                 }
-              )}
+              )} */}
+              </div>
             </>
           )}
         </div>
