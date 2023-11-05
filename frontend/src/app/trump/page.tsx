@@ -1,12 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 
 import YouTube, { YouTubeProps } from "react-youtube";
 import { ANALYSIS_DATA, AnalysisData } from "./data";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
-import { ProgressBar } from "react-bootstrap";
 
 const YoutubeVid = ({
   videoId,
@@ -26,8 +24,8 @@ const YoutubeVid = ({
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
-      start: 58,
-      end: 115,
+      start: 8,
+      // end: 115,
     },
   };
 
@@ -51,9 +49,8 @@ interface Person {
 type TagInfo = Record<string, Person>;
 
 const TAG_INFO: TagInfo = {
-  "1": { name: "Governor Scott", color: "red", kind: "interviewee" },
-  "2": { name: "Journalist", color: "blue", kind: "interviewer" },
-  "3": { name: "Other Journalist", color: "green", kind: "interviewer" },
+  "1": { name: "Lesley Stahl", color: "red", kind: "interviewer" },
+  "2": { name: "Donald Trump", color: "blue", kind: "interviewee" },
 };
 
 type ChartData = {
@@ -116,7 +113,7 @@ export default function Home() {
   //   analysisData: AnalysisData
   // ): SpeakingData => {
   //   // Get the amount of time that each speaker spoke across all of their speech segments
-  //   const speakingData: SpeakingData = { "1": 0, "2": 0, "3": 0 };
+  //   const speakingData: SpeakingData = { "1": 0, "2": 0};
   //   analysisData[analysisData.length - 1].transcription.forEach((entry) => {
   //     const { start_time, end_time, speaker_tag } = entry;
   //     speakingData[speaker_tag.toString() as "1" | "2" | "3"] +=
@@ -157,7 +154,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between p-4">
       <div className="z-10  w-full items-center justify-between font-mono text-sm lg:flex">
         <YoutubeVid
-          videoId="fbgnieG9Z4g"
+          videoId="Uf7vYkX-WVs"
           onClick={() => {
             // vidRef.current?.click();
             isPaused.current = !isPaused.current;
@@ -202,6 +199,16 @@ export default function Home() {
               <div className="flex-col">
                 <div>
                   <h2
+                    className="text-2xl mt-16 font-bold text-center"
+                    style={{
+                      // red in style with the other colors
+                      color: "#ffc658",
+                    }}
+                  >
+                    Number of interruptions:{" "}
+                    {analysisData[analysisData.length - 1].interruptions}
+                  </h2>
+                  <h2
                     className="text-2xl font-bold text-center"
                     style={{
                       color: "#82ca9d",
@@ -219,6 +226,7 @@ export default function Home() {
                     Plain-spoken:{" "}
                     {analysisData[analysisData.length - 1].friendly}
                   </h2>
+
                   <LineChart
                     width={500}
                     height={300}
@@ -272,14 +280,14 @@ export default function Home() {
             </>
           )}
         </div>
-        <div className="w-2/3 ml-6 flex-col justify-between space-y-24">
+        <div className="w-2/3 ml-6 flex-col justify-between space-y-16">
           {analysisData && analysisData[analysisData.length - 1] && (
             <>
               <div>
                 {/** Title for section of unanswered questions */}
                 <h1 className="text-xl font-bold">Unanswered Questions</h1>
 
-                {analysisData[analysisData.length - 1].questions.map(
+                {analysisData[analysisData.length - 1].unanswered_questions.map(
                   (question, i) => {
                     return (
                       <div key={i}>
@@ -293,15 +301,50 @@ export default function Home() {
                 {/** Title for section of unanswered questions */}
                 <h1 className="text-xl font-bold">Answered Questions</h1>
 
-                {/* {analysisData[analysisData.length - 1].questions.map(
-                (question, i) => {
-                  return (
-                    <div key={i}>
-                      <h2 className="text-xl  ">{question}</h2>
-                    </div>
-                  );
-                }
-              )} */}
+                {analysisData[analysisData.length - 1].answered_questions.map(
+                  (question, i) => {
+                    return (
+                      <div key={i}>
+                        <h2 className="text-xl">{question}</h2>
+                      </div>
+                    );
+                  }
+                )}
+              </div>
+              <div>
+                {/** Title for section of unanswered questions */}
+                <h1 className="text-xl font-bold">Contradictions</h1>
+
+                {analysisData[analysisData.length - 1].contradictions.map(
+                  (question, i) => {
+                    return (
+                      <div key={i}>
+                        <h2 className="text-xl">- {question}</h2>
+                        <br />
+                      </div>
+                    );
+                  }
+                )}
+                <br />
+                {analysisData[analysisData.length - 1].contradictions.length >
+                  0 && (
+                  <>
+                    <h2 className="font-bold">Citations</h2>
+                    <span>
+                      <cite>
+                        <a
+                          className="text-blue underline"
+                          href="https://www.worldwildlife.org/pages/why-are-glaciers-and-sea-ice-melting"
+                        >
+                          Why are glaciers and sea ice melting?
+                        </a>
+                      </cite>{" "}
+                      <span className="ml-8 italic">
+                        - WWF (World Wildlife Fund) 2020
+                      </span>
+                    </span>
+                  </>
+                )}
               </div>
             </>
           )}

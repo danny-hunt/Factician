@@ -4,8 +4,10 @@ from typing import Literal, Optional, TypedDict
 from anthropic import Anthropic, HUMAN_PROMPT, AI_PROMPT
 from google.cloud import speech
 from utils.cleaned_police_dodge import full_police_transcript
+from utils.cleaned_trump import trump_transcript
+from utils.wwf_article import wwf_article_text as wwf
 
-GS_LINK = "gs://anthropic-paxmamn/doubles.wav"
+GS_LINK = "gs://anthropic-paxmamn/Trump.wav" # doubles.wav
 
 anthropic = Anthropic()
 
@@ -16,9 +18,9 @@ class Person(TypedDict):
     kind: Literal["interviewer", "interviewee"]
 
 TagInfo = {
-    1: {"name": "Rick Scott", "color": "red", "kind": "interviewee"},
-    2: {"name": "Jenny", "color": "blue", "kind": "interviewer"},
-    3: {"name": "Jeff", "color": "green", "kind": "interviewer"},
+    2: {"name": "Donald Trump", "color": "red", "kind": "interviewee"},
+    1: {"name": "Leslie Stahl", "color": "blue", "kind": "interviewer"},
+    # 3: {"name": "Jeff", "color": "green", "kind": "interviewer"},
 }
 
 class FullTranscriptionUnit(TypedDict):
@@ -44,7 +46,7 @@ class Interruption(TypedDict):
 class AnalysisDict(TypedDict):
     time_end: float
     transcription: Transcription
-    interruptions: list[Interruption]
+    interruptions: int
     evasiveness: Optional[int]  # 0-100
     friendly: Optional[int]  # 0-100
     questions: list[str]
@@ -57,7 +59,7 @@ def collapse_transcription(transcription: Transcription, current_time: float) ->
     current_word = ""
     current_speaker = 0
     current_start = 0.0
-    current_end = 0.0
+    current_end = current_time
     for word in transcription:
         if word["end_time"] > current_time:
             break
@@ -75,7 +77,7 @@ def collapse_transcription(transcription: Transcription, current_time: float) ->
     return output
 
 
-def run_quickstart() -> speech.RecognizeResponse:
+def run_quickstart() -> Transcription:
     # Instantiates a client
     client = speech.SpeechClient()
 
@@ -113,7 +115,6 @@ def run_quickstart() -> speech.RecognizeResponse:
     for word_info in words_info:
         output.append({"word": word_info.word, "speaker_tag": word_info.speaker_tag, "start_time": word_info.start_time.total_seconds(), "end_time": word_info.end_time.total_seconds()})
         print(f"word: '{word_info.word}', speaker_tag: {word_info.speaker_tag}")
-
     return output
 
 def transcript_to_prompt(transcript: Transcription) -> str:
@@ -122,6 +123,15 @@ def transcript_to_prompt(transcript: Transcription) -> str:
         # print(phrase)
         output += f"<{TagInfo[phrase['speaker_tag']]['name'] + ' (politician)' if TagInfo[phrase['speaker_tag']]['kind'] == 'interviewee' else '(interviewer)'}>\n"
         output += phrase["word"] + "\n"
+        output += f"</{TagInfo[phrase['speaker_tag']]['name']}>\n"
+    return output
+
+def timed_transcript_to_prompt(transcript: Transcription) -> str:
+    output = ""
+    for phrase in transcript:
+        # print(phrase)
+        output += f"<{TagInfo[phrase['speaker_tag']]['name'] + ' (politician)' if TagInfo[phrase['speaker_tag']]['kind'] == 'interviewee' else '(interviewer)'}>\n"
+        output += phrase["word"] +  "(" + str(phrase["end_time"] - phrase["start_time"]) + "s)" + "\n"
         output += f"</{TagInfo[phrase['speaker_tag']]['name']}>\n"
     return output
 
@@ -156,12 +166,12 @@ def detect_interviewee_attitude(transcript: Transcription, attribute: Literal['e
 def grammify_question(question: str) -> str:
     return question.capitalize() + ("?" if question[-1] != "?" else "")
     
-def extract_questions(transcript: Transcription) -> list[str]:
+def extract_questions(transcript: Transcription) -> [list[str], list[str]]:
     prompt = f"""I'm going to give you a transcript from a political interview and then I'm going to ask you some questions about it.
     <transcript>
     {transcript_to_prompt(transcript)}</transcript>
-    What questions have been asked to the politican by the interviewer?
-    Use JSON format with the key as "questions", and the value as a list of strings. 
+    What questions have been asked to the politican by the interviewer? Of those questions which have been answered?
+    Use JSON format with the keys as "answered_questions" and "unanswered_questions". Their values are both lists of strings. Questions do not appear in both. 
 
     Assistant:
     """
@@ -176,13 +186,77 @@ def extract_questions(transcript: Transcription) -> list[str]:
         result_dict = json.loads(completion.completion)
     except Exception as e:
         print(e)
+        return [[], []]
+    return [
+        list(map(grammify_question, result_dict["answered_questions"])) if "answered_questions" in result_dict and isinstance(result_dict["answered_questions"], list) else [],
+        list(map(grammify_question, result_dict["unanswered_questions"])) if "unanswered_questions" in result_dict and isinstance(result_dict["unanswered_questions"], list) else []
+    ]
+
+
+def interruptions(transcript: Transcription) -> list[float]:
+    prompt = f"""I'm going to give you a transcript from a political interview and then I'm going to ask you some questions about it.
+    <transcript>
+    {timed_transcript_to_prompt(transcript)}</transcript>
+    How many times does the politician interrupt the interviewer? 
+    Use JSON format with the key as "interruption_count". The value is an integer.
+
+    Assistant:
+    """
+    anthropic = Anthropic()
+    completion = anthropic.completions.create(
+        model="claude-2",
+        max_tokens_to_sample=300,
+        prompt=f"{HUMAN_PROMPT} {prompt}",
+    )
+    print(completion.completion)
+    match = re.search(r'[0-9]+', completion.completion)
+    """
+    Use JSON format with the keys as "rating"
+    """
+    if match:
+        return int(match.group())
+    else:
+        return None
+    
+
+def detect_lies(transcript: Transcription) -> list[str]:
+    # https://www.worldwildlife.org/pages/why-are-glaciers-and-sea-ice-melting
+    article_text = wwf
+
+    prompt = f"""I'm going to give you a truthful article about climate change and transcript from a political interview and then I'm going to ask you some questions about it.
+    <article>
+    {article_text}
+    </article>
+    <transcript>
+    {timed_transcript_to_prompt(transcript)}</transcript>
+    Does the politician constradict the article? If so, how?
+    Use JSON format with the key as "explained_contradictions". The value is a list of strings
+
+    Assistant:
+    """
+    anthropic = Anthropic()
+    completion = anthropic.completions.create(
+        model="claude-2",
+        max_tokens_to_sample=1000,
+        prompt=f"{HUMAN_PROMPT} {prompt}",
+    )
+    print(completion.completion)
+    try:
+        result_dict = json.loads(completion.completion)
+    except Exception as e:
+        print(e)
         return []
-    return list(map(grammify_question, result_dict["questions"])) if "questions" in result_dict and isinstance(result_dict["questions"], list) else []
+    return list(map(grammify_question, result_dict["explained_contradictions"])) if "explained_contradictions" in result_dict and isinstance(result_dict["explained_contradictions"], list) else [],
 
 
 if __name__ == "__main__":
     # full_transcript = run_quickstart()
-    full_transcript = full_police_transcript
+    # with open("trump_transcript.txt", "w") as f:
+    #     f.write(json.dumps(full_transcript, indent=4))
+    # print("transcribed")
+
+    # full_transcript = full_police_transcript
+    full_transcript = trump_transcript
 
     analysis: CompletedAnalysis = [
         {
@@ -190,24 +264,31 @@ if __name__ == "__main__":
             "transcription": [],
             "evasiveness": None,
             "friendly": None,
-            "interruptions": [],
+            "interruptions": 0,
+            "answered_questions": [],
+            "unanswered_questions": [],
+            "contradictions": [],
         }
     ]
 
     for t in range(3, 63, 3):
         temp_transcription = collapse_transcription(full_transcript, t)
         evasiveness = detect_interviewee_attitude(temp_transcription, "evasive", None)
-        friendly = detect_interviewee_attitude(temp_transcription, "friendly", "angry")
-        questions = extract_questions(temp_transcription)
+        friendly = detect_interviewee_attitude(temp_transcription, "plain-spoken", None)
+        answered_questions, unanswered_questions = extract_questions(temp_transcription)
+        interruptions_count = interruptions(temp_transcription)
+        contradictions = detect_lies(temp_transcription)
         print(f"{evasiveness=}")
         print(f"{friendly=}")
         analysis.append({
             "time_end": t,
             "transcription": temp_transcription,
             "evasiveness": evasiveness,
-            "friendly": friendly,
-            "interruptions": [],
-            "questions": questions,
+            "friendly": friendly, # This is now plain-spokenness
+            "interruptions": interruptions_count,
+            "answered_questions": answered_questions,
+            "unanswered_questions": unanswered_questions,
+            "contradictions": contradictions,
         })
 
 
